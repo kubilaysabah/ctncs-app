@@ -1,0 +1,19 @@
+{
+    "require": {
+        "slim/slim": "4.*",
+        "guzzlehttp/psr7": "^2",
+        "guzzlehttp/guzzle": "^7.0",
+        "slim/twig-view": "^3.4",
+        "webonyx/graphql-php": "^15.21",
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\Controller\\": "controller/"
+        }
+    },
+    "scripts": {
+        "start": "php -S localhost:8080 -t app",
+        "dump": "composer dump-autoload"
+    }
+}

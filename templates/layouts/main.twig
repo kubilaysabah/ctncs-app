@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Ana Sayfa{% endblock %}</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    {% include 'partials/header.twig' %}
+    {% block content %}{% endblock %}
+    {% include 'partials/footer.twig' %}
+</body>
+</html>
