@@ -1,4 +1,4 @@
-# CTNCS App
+# Slim Twig Web APp
 
 A modern PHP web application built with Slim Framework that integrates with Hygraph CMS for content management.
 
