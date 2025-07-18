@@ -86,23 +86,6 @@ class HygraphClient
         return $this->query($mutation, $variables);
     }
 
-    /**
-     * Örnek: Tüm blog yazılarını getir
-     */
-    public function getAllPosts(): array
-    {
-        $query = '
-            query GetAllPosts {
-                posts {
-                    id
-                }
-            }
-        ';
-
-        return $this->query($query);
-    }
-
-
     public function getSettings(): array
     {
         $query = '
@@ -191,6 +174,35 @@ class HygraphClient
                   width
                   height
                 }
+              }
+            }
+        ';
+
+        return $this->query($query)->settings ?? [];
+    }
+
+    public function getSlides(): array
+    {
+        $query = '
+            query GetSlides {
+              slides {
+                    id
+                    title
+                    description
+                    url
+                    buttonText
+                    mobileBanner {
+                      id
+                      url
+                      width
+                      height
+                    }
+                    desktopBanner {
+                      id
+                      url
+                      width
+                      height
+                    }
               }
             }
         ';

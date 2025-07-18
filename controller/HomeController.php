@@ -22,7 +22,12 @@ class HomeController
 
         try {
             $settings = $this->client->getSettings();
-            return $view->render($response, 'pages/home.twig', $settings);
+            $slides = $this->client->getSlides();
+
+            return $view->render($response, 'pages/home.twig', [
+                'settings' => $settings,
+                'slides' => $slides,
+            ]);
 
         } catch (\Exception $e) {
             // Hata durumunda server error sayfasını göster

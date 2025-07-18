@@ -2,12 +2,15 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}Ana Sayfa{% endblock %}</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    {% block styles %}{% endblock %}
 </head>
 <body>
     {% include 'partials/header.twig' %}
     {% block content %}{% endblock %}
     {% include 'partials/footer.twig' %}
+    {% block scripts %}{% endblock %}
 </body>
 </html>

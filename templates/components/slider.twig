@@ -1,0 +1,68 @@
+{% block styles %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+{% endblock %}
+
+<div class="swiper" id="slider">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        {% for slide in slides.slides %}
+            <div class="swiper-slide">
+                <div class="bg-black/15 absolute top-0 left-0 w-full h-full"></div>
+                <article class="z-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+                    <h2 class="text-white text-2xl lg:text-7xl">{{ slide.title }}</h2>
+                    <p class="text-white text-xl">{{ slide.description  }}</p>
+                    {% if slide.buttonText %}
+                        <a class="block bg-blue-500 text-white rounded px-4 py-2 mt-5 text-lg font-semibold hover:bg-blue-600 transition-all duration-200" href="{{ slide.url }}">{{ slide.buttonText }}</a>
+                    {% endif %}
+                </article>
+                <picture class="block min-h-[750px] w-full lg:min-h-auto h-screen">
+                    <source media="(min-width: 1024px)" srcset="{{ slide.desktopBanner.url }}">
+                    <img class="absolute top-0 left-0 h-full w-full block object-cover" src="{{ slide.mobileBanner.url }}" alt="{{ slide.title }}" />
+                </picture>
+            </div>
+        {% endfor %}
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+    <!-- If we need scrollbar -->
+    <div class="swiper-scrollbar"></div>
+</div>
+
+
+{% block scripts %}
+    <script type="module">
+        import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs'
+        const swiper = new Swiper('#slider', {
+            // Optional parameters
+            autoHeight: true,
+            direction: 'horizontal',
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            loop: true,
+
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // And if we need scrollbar
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+        });
+    </script>
+{% endblock %}
